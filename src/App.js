@@ -1,11 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-    </Routes>
+    <ThemeProvider>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </ThemeProvider>
   );
 }
 

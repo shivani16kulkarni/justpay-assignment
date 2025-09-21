@@ -2,7 +2,11 @@
 
 :root {
   --color-light-bg: #ffffff;
+  --color-dark-bg: #1C1C1C;
+  --color-light-text: #1C1C1C;
+  --color-dark-text: #ffffff;
   --color-light-border: #1C1C1C1A;
+  --color-dark-border: #374151;
   --color-gray-800: #111827;
   --sidebar-width: 212px;
   --right-sidebar-width: 280px;
@@ -21,4 +25,14 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+}
+
+body[data-theme="light"] {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+}
+
+body[data-theme="dark"] {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
 }
