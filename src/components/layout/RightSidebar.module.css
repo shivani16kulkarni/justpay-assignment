@@ -1,0 +1,24 @@
+.rightSidebar {
+  width: var(--right-sidebar-width);
+  min-height: 100vh;
+  padding: 20px;
+  background: var(--color-light-bg);
+  border-left: 1px solid var(--color-light-border);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.rightSidebar.dark {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-text);
+  border-left: 1px solid var(--color-dark-border);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

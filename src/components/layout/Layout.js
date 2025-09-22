@@ -1,4 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContext';
+import Sidebar from './Sidebar';
+import RightSidebar from './RightSidebar';
 import styles from './Layout.module.css';
 
 const Layout = ({ children }) => {
@@ -13,9 +15,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className={`${styles.appContainer} ${themeClass}`}>
-      <aside className={styles.sidebar}>
-        Left Sidebar
-      </aside>
+      <Sidebar />
       <div className={styles.contentWrapper}>
         <header className={styles.header}>
           <span>Header</span>
@@ -27,9 +27,7 @@ const Layout = ({ children }) => {
           {children}
         </main>
       </div>
-      <aside className={styles.rightSidebar}>
-        Right Sidebar
-      </aside>
+      <RightSidebar />
     </div>
   );
 };
