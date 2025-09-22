@@ -1,62 +1,54 @@
-import { useState } from 'react';
 import {
-  ChartPieSliceIcon,
-  ShoppingBagOpenIcon,
-  FolderNotchIcon,
-  BookOpenIcon,
-  IdentificationBadgeIcon,
-  IdentificationCardIcon,
-  UsersThreeIcon,
-  NotebookIcon,
-  ChatsTeardropIcon,
-  CaretRightIcon,
-  CaretDownIcon
+  ChartPieSlice as ChartPieSliceIcon,
+  ShoppingBagOpen as ShoppingBagOpenIcon,
+  Folder as FolderNotchIcon,
+  BookOpen as BookOpenIcon,
+  IdentificationBadge as IdentificationBadgeIcon,
+  IdentificationCard as IdentificationCardIcon,
+  UsersThree as UsersThreeIcon,
+  Notebook as NotebookIcon,
+  ChatsTeardrop as ChatsTeardropIcon,
+  CaretRight as CaretRightIcon,
+  CaretDown as CaretDownIcon
 } from '@phosphor-icons/react';
+import styles from './Sidebar.module.css';
 import { useTheme } from '../../contexts/ThemeContext';
 import brandLogo from '../../assets/brandLogo.png';
-import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
   const { isDark } = useTheme();
-  const [userProfileOpen, setUserProfileOpen] = useState(false);
 
-  const handleUserProfileClick = () => {
-    setUserProfileOpen(!userProfileOpen);
-  };
+  const sidebarClass = `${styles.sidebar} ${isDark ? styles.dark : styles.light}`;
 
   return (
-    <aside className={`${styles.sidebar} ${isDark ? styles.dark : styles.light}`}>
+    <aside className={sidebarClass}>
       <div className={styles.logoBrandingGroup}>
         <img src={brandLogo} alt="ByeWind" className={styles.logo} />
         <span className={styles.brandText}>ByeWind</span>
       </div>
 
-      <div className={`${styles.navigationGroup} ${styles.favoritesGroup}`}>
+      <div className={styles.navigationGroup}>
         <div className={styles.favoritesContainer}>
-          <a href="/favorites" className={`${styles.favoriteLink} ${styles.activeFavoriteLink}`}>
-            Favorites
-          </a>
-          <a href="/recently" className={`${styles.favoriteLink} ${styles.inactiveFavoriteLink}`}>
-            Recently
-          </a>
+          <a href="/favorites" className={`${styles.favoriteLink} ${styles.activeFavoriteLink}`}>Favorites</a>
+          <a href="/recently" className={`${styles.favoriteLink} ${styles.inactiveFavoriteLink}`}>Recently</a>
         </div>
         <ul className={styles.navigationList}>
           <li className={styles.favoriteItem}>
             <a href="/overview">
               <div className={styles.dotIcon}></div>
-              <span className={styles.favoriteText}>Overview</span>
+              Overview
             </a>
           </li>
           <li className={styles.favoriteItem}>
             <a href="/projects">
               <div className={styles.dotIcon}></div>
-              <span className={styles.favoriteText}>Projects</span>
+              Projects
             </a>
           </li>
         </ul>
       </div>
 
-      <div className={`${styles.navigationGroup} ${styles.dashboardsGroup}`}>
+      <div className={styles.navigationGroup}>
         <h3 className={styles.sectionHeader}>Dashboards</h3>
         <ul className={styles.navigationList}>
           <li className={`${styles.navigationItem} ${styles.activeItem}`}>
@@ -89,27 +81,15 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      <div className={`${styles.navigationGroup} ${styles.pagesGroup}`}>
+      <div className={styles.navigationGroup}>
         <h3 className={styles.sectionHeader}>Pages</h3>
         <ul className={styles.navigationList}>
           <li className={styles.navigationItem}>
-            <button onClick={handleUserProfileClick}>
-              {userProfileOpen ?
-                <CaretDownIcon className={styles.leftArrow} /> :
-                <CaretRightIcon className={styles.leftArrow} />
-              }
+            <a href="/profile">
+              <CaretRightIcon className={styles.leftArrow} />
               <IdentificationBadgeIcon className={styles.navigationIcon} />
               User Profile
-            </button>
-            {userProfileOpen && (
-              <ul className={styles.submenu}>
-                <li><a href="/profile/overview" className={styles.submenuItem}>Overview</a></li>
-                <li><a href="/profile/projects" className={styles.submenuItem}>Projects</a></li>
-                <li><a href="/profile/campaigns" className={styles.submenuItem}>Campaigns</a></li>
-                <li><a href="/profile/documents" className={styles.submenuItem}>Documents</a></li>
-                <li><a href="/profile/followers" className={styles.submenuItem}>Followers</a></li>
-              </ul>
-            )}
+            </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/account">

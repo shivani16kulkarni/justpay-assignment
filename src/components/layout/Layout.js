@@ -6,26 +6,21 @@ import styles from './Layout.module.css';
 const Layout = ({ children }) => {
   const { isDark, toggleTheme } = useTheme();
 
-  const handleThemeToggle = () => {
-    toggleTheme();
-  };
-
-  const themeClass = isDark ? styles.dark : styles.light;
-  const themeButtonText = isDark ? 'Light' : 'Dark';
+  const appClasses = `${styles.appContainer} ${isDark ? styles.dark : styles.light}`;
 
   return (
-    <div className={`${styles.appContainer} ${themeClass}`}>
+    <div className={appClasses}>
       <Sidebar />
       <div className={styles.contentWrapper}>
-        <header className={styles.header}>
-          <span>Header</span>
-          <button onClick={handleThemeToggle} className={styles.themeButton}>
-            {themeButtonText}
+        <div className={styles.header}>
+          <h1>Header</h1>
+          <button onClick={toggleTheme} className={styles.themeButton}>
+            {isDark ? 'Light' : 'Dark'}
           </button>
-        </header>
-        <main className={styles.mainContent}>
+        </div>
+        <div className={styles.mainContent}>
           {children}
-        </main>
+        </div>
       </div>
       <RightSidebar />
     </div>

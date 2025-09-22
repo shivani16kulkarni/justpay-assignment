@@ -1,24 +1,404 @@
 .rightSidebar {
   width: var(--right-sidebar-width);
   min-height: 100vh;
-  padding: 20px;
   background: var(--color-light-bg);
   border-left: 1px solid var(--color-light-border);
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 10;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-light-text);
+  transition: transform var(--transition-medium);
+  transform: translateX(0);
 }
 
-.rightSidebar.dark {
-  background: var(--color-dark-bg);
-  color: var(--color-dark-text);
-  border-left: 1px solid var(--color-dark-border);
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 240px;
+  opacity: 1;
 }
 
-.content {
+.firstGroup {
+  height: 252px;
+}
+
+.secondGroup {
+  height: 306px;
+}
+
+.thirdGroup {
+  height: 276px;
+}
+
+.groupContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headingContainer {
+  width: 240px;
+  height: 36px;
+  padding: 8px 4px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+}
+
+.groupHeading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: var(--color-gray-800);
+}
+
+.notificationsList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.notificationItem {
+  width: 232px;
+  height: 46px;
+  padding: 4px;
+  gap: 8px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+}
+
+.notificationIcon {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+  background: var(--primary-blue);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.notificationTextGroup {
+  width: 192px;
+  height: 38px;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 8px;
+}
+
+.notificationTextFirst {
+  width: 192px;
+  height: 20px;
+  opacity: 1;
+  font-size: 14px;
+  color: var(--color-gray-700);
+  display: block;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notificationTextSecond {
+  width: 192px;
+  height: 18px;
+  opacity: 1;
+  font-size: 12px;
+  color: var(--color-gray-500);
+  display: block;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dark .rightSidebar {
+  background: var(--color-dark-bg);
+  border-left: 1px solid var(--color-dark-border);
+  color: var(--color-dark-text);
+}
+
+.dark .firstGroup,
+.dark .secondGroup,
+.dark .thirdGroup {
+  background: var(--color-dark-bg);
+}
+
+
+.dark .groupHeading,
+.dark .activitiesHeading,
+.dark .contactsHeading {
+  color: var(--color-dark-text);
+}
+
+.dark .timelineItem:not(:last-child)::after {
+  background: var(--color-gray-600);
+}
+
+
+.dark .notificationIcon {
+  background: var(--primary-blue);
+}
+
+.dark .activityIcon {
+  background: var(--color-gray-600);
+}
+
+.dark .contactIcon {
+  background: var(--color-gray-600);
+}
+
+.dark .notificationTextFirst,
+.dark .activityTextFirst,
+.dark .contactText {
+  color: var(--color-gray-300);
+}
+
+.dark .notificationTextSecond,
+.dark .activityTextSecond {
+  color: var(--color-gray-400);
+}
+
+.activitiesHeadingContainer {
+  width: 240px;
+  height: 36px;
+  padding: 8px 4px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+}
+
+.activitiesHeading {
+  width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: var(--color-gray-800);
+}
+
+.activitiesList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.activityTimeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timelineItem:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15.5px;
+  top: calc(100% - 4px);
+  width: 1px;
+  height: 14px;
+  background: var(--color-gray-300);
+  z-index: 1;
+}
+
+.timelineItem {
+  width: 232px;
+  height: 46px;
+  padding: 4px;
+  gap: 8px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.activityItem {
+  width: 232px;
+  height: 46px;
+  padding: 4px;
+  gap: 8px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+}
+
+.activityIcon {
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+  border-radius: 80px;
+  background: var(--color-gray-400);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activityIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 80px;
+}
+
+.activityTextGroup {
+  width: 192px;
+  height: 38px;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px 8px;
+}
+
+.activityTextFirst {
+  width: 192px;
+  height: 20px;
+  opacity: 1;
+  font-size: 14px;
+  color: var(--color-gray-700);
+  display: block;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activityTextSecond {
+  width: 192px;
+  height: 18px;
+  opacity: 1;
+  font-size: 12px;
+  color: var(--color-gray-500);
+  display: block;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contactsHeadingContainer {
+  width: 240px;
+  height: 36px;
+  padding: 8px 4px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+}
+
+.contactsHeading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: var(--color-gray-800);
+}
+
+.contactsList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.contactItem {
+  width: 240px;
+  height: 32px;
+  padding: 4px;
+  gap: 8px;
+  border-radius: var(--border-radius-md);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+}
+
+.contactIcon {
+  width: 24px;
+  height: 24px;
+  opacity: 1;
+  border-radius: 80px;
+  background: var(--color-gray-400);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactIconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 80px;
+}
+
+.contactText {
+  width: auto;
+  height: 20px;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+  display: block;
+  line-height: 20px;
+  padding: 4px 8px;
+  font-size: 14px;
+  color: var(--color-gray-700);
+  box-sizing: border-box;
+}
+
+.rightSidebar.closed {
+  transform: translateX(100%);
+}
+
+.rightSidebar.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 1280px) {
+  .rightSidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    transform: translateX(100%);
+    background: var(--color-light-bg);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .rightSidebar.open {
+    transform: translateX(0);
+  }
+
+  .dark .rightSidebar {
+    background: var(--color-dark-bg);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  }
 }
