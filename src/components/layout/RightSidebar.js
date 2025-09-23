@@ -1,11 +1,13 @@
+import { Bug, UserCircle, Radio } from '@phosphor-icons/react';
 import styles from './RightSidebar.module.css';
 import { useTheme } from '../../contexts/ThemeContext';
-import { Bug, UserCircle, Radio } from '@phosphor-icons/react';
+
 import activityIconOne from '../../assets/activities/one.png';
 import activityIconTwo from '../../assets/activities/two.png';
 import activityIconThree from '../../assets/activities/three.png';
 import activityIconFour from '../../assets/activities/four.png';
 import activityIconFive from '../../assets/activities/five.png';
+
 import contactIconOne from '../../assets/contacts/one.png';
 import contactIconTwo from '../../assets/contacts/two.png';
 import contactIconThree from '../../assets/contacts/three.png';
@@ -13,16 +15,17 @@ import contactIconFour from '../../assets/contacts/four.png';
 import contactIconFive from '../../assets/contacts/five.png';
 import contactIconSix from '../../assets/contacts/six.png';
 
-const RightSidebar = () => {
+const ICON_SIZE = 16;
+const ICON_COLOR = '#1C1C1C';
+
+const RightSidebar = ({ isOpen }) => {
   const { isDark } = useTheme();
 
-  const iconSize = 16;
-  const iconColor = '#1C1C1C';
-
-  const rightSidebarClass = `${styles.rightSidebar} ${isDark ? styles.dark : ''}`;
-
   return (
-    <aside className={rightSidebarClass}>
+    <aside
+      className={`${styles.rightSidebar} ${isDark ? styles.dark : ''}`}
+      style={{ transform: isOpen ? 'translateX(0)' : 'translateX(100%)' }}
+    >
       <div className={styles.sidebarContent}>
         <div className={`sidebar-group ${styles.firstGroup}`}>
           <div className={styles.headingContainer}>
@@ -33,7 +36,7 @@ const RightSidebar = () => {
           <div className={styles.notificationsList}>
             <div className={styles.notificationItem}>
               <div className={styles.notificationIcon}>
-                <Bug size={iconSize} color={iconColor} />
+                <Bug size={ICON_SIZE} color={ICON_COLOR} />
               </div>
               <div className={styles.notificationTextGroup}>
                 <div className={styles.notificationTextFirst}>You have a bug that needs to be fixed.</div>
@@ -42,7 +45,7 @@ const RightSidebar = () => {
             </div>
             <div className={styles.notificationItem}>
               <div className={styles.notificationIcon}>
-                <UserCircle size={iconSize} color={iconColor} />
+                <UserCircle size={ICON_SIZE} color={ICON_COLOR} />
               </div>
               <div className={styles.notificationTextGroup}>
                 <div className={styles.notificationTextFirst}>New user registered</div>
@@ -51,7 +54,7 @@ const RightSidebar = () => {
             </div>
             <div className={styles.notificationItem}>
               <div className={styles.notificationIcon}>
-                <Bug size={iconSize} color={iconColor} />
+                <Bug size={ICON_SIZE} color={ICON_COLOR} />
               </div>
               <div className={styles.notificationTextGroup}>
                 <div className={styles.notificationTextFirst}>You have a bug that needs ...</div>
@@ -60,7 +63,7 @@ const RightSidebar = () => {
             </div>
             <div className={styles.notificationItem}>
               <div className={styles.notificationIcon}>
-                <Radio size={iconSize} color={iconColor} />
+                <Radio size={ICON_SIZE} color={ICON_COLOR} />
               </div>
               <div className={styles.notificationTextGroup}>
                 <div className={styles.notificationTextFirst}>Andi Lane subscribed to you</div>

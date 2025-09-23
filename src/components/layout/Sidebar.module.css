@@ -7,8 +7,9 @@
   gap: 16px;
   border-right: 1px solid var(--color-light-border);
   overflow-y: auto;
-  transition: transform var(--transition-medium);
-  transform: translateX(0);
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .sidebar.light {
@@ -150,9 +151,9 @@
 .expandableItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
+  padding: 4px 12px;
   border-radius: var(--border-radius-md);
+  gap: 4px;
   cursor: pointer;
   transition: var(--transition-fast);
   font-size: 14px;
@@ -162,6 +163,7 @@
   border: none;
   width: 100%;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .expandableItem:hover {
@@ -289,11 +291,11 @@
 }
 
 .sidebar.dark .activeFavoriteLink {
-  color: var(--color-dark-text);
+  color: #FFFFFF66;
 }
 
 .sidebar.dark .inactiveFavoriteLink {
-  color: var(--color-gray-400);
+  color: #FFFFFF33;
 }
 
 .sidebar.dark .favoriteItem {
@@ -306,29 +308,29 @@
 }
 
 .sidebar.dark .dotIcon::before {
-  background: var(--color-gray-400);
+  background: #FFFFFF33;
 }
 
 .sidebar.dark .sectionHeader {
-  color: var(--color-gray-300);
+  color: #FFFFFF66;
 }
 
 .sidebar.dark .navigationItem {
-  color: var(--color-gray-300);
+  color: #FFFFFF66;
 }
 
 .sidebar.dark .navigationItem:hover {
   background-color: var(--color-hover-dark);
-  color: var(--color-dark-text);
+  color: #FFFFFF;
 }
 
 .sidebar.dark .activeItem {
   background-color: var(--color-hover-dark);
-  color: var(--color-dark-text);
+  color: #FFFFFF;
 }
 
 .sidebar.dark .activeItem::before {
-  background: var(--color-dark-text);
+  background: #FFFFFF;
 }
 
 .sidebar.dark .submenuItem {
@@ -386,7 +388,7 @@
   }
 
   .sidebar.dark {
-    background: var(--color-dark-bg);
+    background: #1C1C1C;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   }
 

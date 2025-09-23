@@ -1,0 +1,180 @@
+.header {
+  width: 100%;
+  height: var(--header-height);
+  background: var(--color-light-bg);
+  border-bottom: 1px solid var(--color-light-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-light-text);
+}
+
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.iconGroup {
+  width: 64px;
+  height: 28px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+}
+
+.textGroup {
+  width: 184px;
+  height: 28px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  color: var(--color-gray-500);
+  transition: color var(--transition-fast);
+}
+
+.iconButton:hover .icon {
+  color: var(--color-gray-700);
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.route {
+  width: 184px;
+  height: 28px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+}
+
+.routePrefix {
+  color: var(--black-40, #1C1C1C66);
+}
+
+.routeCurrent {
+  color: var(--color-gray-800);
+}
+
+.searchContainer {
+  min-width: 120px;
+  height: 28px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-md);
+  background: var(--black-5, #1C1C1C0D);
+  position: relative;
+}
+
+.searchContainer::after {
+  content: "⌘/";
+  position: absolute;
+  right: 8px;
+  color: var(--color-gray-400);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.iconButtonsContainer {
+  width: 136px;
+  height: 28px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  border-radius: var(--border-radius-md);
+}
+
+.searchIcon {
+  color: var(--color-gray-500);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--color-gray-800);
+  flex: 1;
+}
+
+.searchInput::placeholder {
+  color: var(--color-gray-400);
+}
+
+.header.dark {
+  background: #1C1C1C;
+  border-bottom: 1px solid var(--color-dark-border);
+  color: #FFFFFF;
+}
+
+.header.dark .searchContainer {
+  background: var(--black-5, #ffffff0D);
+}
+
+.header.dark .searchContainer::after {
+  color: var(--color-gray-400);
+}
+
+.header.dark .searchInput {
+  color: #FFFFFF;
+}
+
+.header.dark .searchInput::placeholder {
+  color: var(--color-gray-400);
+}
+
+.header.dark .routePrefix {
+  color: #FFFFFF66;
+}
+
+.header.dark .routeCurrent {
+  color: #FFFFFF;
+}
+
+.header.dark .icon {
+  color: #FFFFFF;
+}
+
+.header.dark .iconButton:hover .icon {
+  color: #FFFFFF;
+}

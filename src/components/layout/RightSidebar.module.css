@@ -7,9 +7,11 @@
   display: flex;
   flex-direction: column;
   color: var(--color-light-text);
-  transition: transform var(--transition-medium);
-  transform: translateX(0);
+  position: fixed;
+  right: 0;
+  top: 0;
 }
+
 
 .sidebarContent {
   display: flex;
@@ -127,23 +129,23 @@
   text-overflow: ellipsis;
 }
 
-.dark .rightSidebar {
-  background: var(--color-dark-bg);
+.rightSidebar.dark {
+  background: #1C1C1C;
   border-left: 1px solid var(--color-dark-border);
-  color: var(--color-dark-text);
+  color: #FFFFFF;
 }
 
-.dark .firstGroup,
-.dark .secondGroup,
-.dark .thirdGroup {
-  background: var(--color-dark-bg);
+.rightSidebar.dark .firstGroup,
+.rightSidebar.dark .secondGroup,
+.rightSidebar.dark .thirdGroup {
+  background: #1C1C1C;
 }
 
 
-.dark .groupHeading,
-.dark .activitiesHeading,
-.dark .contactsHeading {
-  color: var(--color-dark-text);
+.rightSidebar.dark .groupHeading,
+.rightSidebar.dark .activitiesHeading,
+.rightSidebar.dark .contactsHeading {
+  color: #FFFFFF;
 }
 
 .dark .timelineItem:not(:last-child)::after {
@@ -163,15 +165,15 @@
   background: var(--color-gray-600);
 }
 
-.dark .notificationTextFirst,
-.dark .activityTextFirst,
-.dark .contactText {
-  color: var(--color-gray-300);
+.rightSidebar.dark .notificationTextFirst,
+.rightSidebar.dark .activityTextFirst,
+.rightSidebar.dark .contactText {
+  color: #FFFFFF;
 }
 
-.dark .notificationTextSecond,
-.dark .activityTextSecond {
-  color: var(--color-gray-400);
+.rightSidebar.dark .notificationTextSecond,
+.rightSidebar.dark .activityTextSecond {
+  color: #FFFFFF66;
 }
 
 .activitiesHeadingContainer {
@@ -398,7 +400,7 @@
   }
 
   .dark .rightSidebar {
-    background: var(--color-dark-bg);
+    background: #1C1C1C;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
   }
 }

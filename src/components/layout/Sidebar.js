@@ -1,27 +1,35 @@
 import {
-  ChartPieSlice as ChartPieSliceIcon,
-  ShoppingBagOpen as ShoppingBagOpenIcon,
-  Folder as FolderNotchIcon,
-  BookOpen as BookOpenIcon,
-  IdentificationBadge as IdentificationBadgeIcon,
-  IdentificationCard as IdentificationCardIcon,
-  UsersThree as UsersThreeIcon,
-  Notebook as NotebookIcon,
-  ChatsTeardrop as ChatsTeardropIcon,
-  CaretRight as CaretRightIcon,
-  CaretDown as CaretDownIcon
+  ChartPieSlice,
+  ShoppingBagOpen,
+  Folder,
+  BookOpen,
+  IdentificationBadge,
+  IdentificationCard,
+  UsersThree,
+  Notebook,
+  ChatsTeardrop,
+  CaretRight,
+  CaretDown
 } from '@phosphor-icons/react';
+
+import { useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useTheme } from '../../contexts/ThemeContext';
 import brandLogo from '../../assets/brandLogo.png';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   const { isDark } = useTheme();
+  const [userProfileOpen, setUserProfileOpen] = useState(false);
 
-  const sidebarClass = `${styles.sidebar} ${isDark ? styles.dark : styles.light}`;
+  const handleUserProfileClick = () => {
+    setUserProfileOpen(!userProfileOpen);
+  };
 
   return (
-    <aside className={sidebarClass}>
+    <aside
+      className={`${styles.sidebar} ${isDark ? styles.dark : styles.light}`}
+      style={{ transform: isOpen ? 'translateX(0)' : 'translateX(-100%)' }}
+    >
       <div className={styles.logoBrandingGroup}>
         <img src={brandLogo} alt="ByeWind" className={styles.logo} />
         <span className={styles.brandText}>ByeWind</span>
@@ -53,28 +61,28 @@ const Sidebar = () => {
         <ul className={styles.navigationList}>
           <li className={`${styles.navigationItem} ${styles.activeItem}`}>
             <a href="/dashboards/default">
-              <ChartPieSliceIcon className={`${styles.navigationIcon} ${styles.alignedNavigationIcon}`} />
+              <ChartPieSlice className={`${styles.navigationIcon} ${styles.alignedNavigationIcon}`} />
               Default
             </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/dashboards/ecommerce">
-              <CaretRightIcon className={styles.leftArrow} />
-              <ShoppingBagOpenIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <ShoppingBagOpen className={styles.navigationIcon} />
               eCommerce
             </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/projects">
-              <CaretRightIcon className={styles.leftArrow} />
-              <FolderNotchIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <Folder className={styles.navigationIcon} />
               Projects
             </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/courses">
-              <CaretRightIcon className={styles.leftArrow} />
-              <BookOpenIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <BookOpen className={styles.navigationIcon} />
               Online Courses
             </a>
           </li>
@@ -85,37 +93,50 @@ const Sidebar = () => {
         <h3 className={styles.sectionHeader}>Pages</h3>
         <ul className={styles.navigationList}>
           <li className={styles.navigationItem}>
-            <a href="/profile">
-              <CaretRightIcon className={styles.leftArrow} />
-              <IdentificationBadgeIcon className={styles.navigationIcon} />
+            <button onClick={handleUserProfileClick} className={styles.expandableItem}>
+              {userProfileOpen ? (
+                <CaretDown className={styles.leftArrow} />
+              ) : (
+                <CaretRight className={styles.leftArrow} />
+              )}
+              <IdentificationBadge className={styles.navigationIcon} />
               User Profile
-            </a>
+            </button>
+            {userProfileOpen && (
+              <ul className={styles.submenu}>
+                <li><a href="/profile/overview" className={styles.submenuItem}>Overview</a></li>
+                <li><a href="/profile/projects" className={styles.submenuItem}>Projects</a></li>
+                <li><a href="/profile/campaigns" className={styles.submenuItem}>Campaigns</a></li>
+                <li><a href="/profile/documents" className={styles.submenuItem}>Documents</a></li>
+                <li><a href="/profile/followers" className={styles.submenuItem}>Followers</a></li>
+              </ul>
+            )}
           </li>
           <li className={styles.navigationItem}>
             <a href="/account">
-              <CaretRightIcon className={styles.leftArrow} />
-              <IdentificationCardIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <IdentificationCard className={styles.navigationIcon} />
               Account
             </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/corporate">
-              <CaretRightIcon className={styles.leftArrow} />
-              <UsersThreeIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <UsersThree className={styles.navigationIcon} />
               Corporate
             </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/blog">
-              <CaretRightIcon className={styles.leftArrow} />
-              <NotebookIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <Notebook className={styles.navigationIcon} />
               Blog
             </a>
           </li>
           <li className={styles.navigationItem}>
             <a href="/social">
-              <CaretRightIcon className={styles.leftArrow} />
-              <ChatsTeardropIcon className={styles.navigationIcon} />
+              <CaretRight className={styles.leftArrow} />
+              <ChatsTeardrop className={styles.navigationIcon} />
               Social
             </a>
           </li>
